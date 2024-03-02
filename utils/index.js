@@ -26,7 +26,7 @@ const questions = [
   {
     type: 'input',
     name: 'dependencies',
-    message: 'What dependencies need to be installed',
+    message: 'What dependencies need to be installed?',
   },
 
 ];
