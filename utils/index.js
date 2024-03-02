@@ -1,13 +1,54 @@
-// TODO: Include packages needed for this application
 
-// TODO: Create an array of questions for user input
-const questions = [];
+const inquirer = require('inquirer');
+const generateMarkdown = require('./generateMarkdown');
+const fs = require('fs');
+const util = require('util');
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+const writeFileAsync = util.promisify(fs.writeFile);
 
-// TODO: Create a function to initialize app
-function init() {}
+const questions = [
+  {
+    type: 'input',
+    name: 'github',
+    message: 'What is your github username?',
+  },
 
-// Function call to initialize app
+  {
+    type: 'input',
+    name: 'title',
+    message: 'What is the title of your project?',
+  },
+  {
+    type: 'input',
+    name: 'description',
+    message: 'Provide a short description of your project:',
+  },
+  {
+    type: 'input',
+    name: 'license',
+    message: 'What license does your project use?',
+  },
+];
+
+function writeToFile(fileName, data) {
+  return writeFileAsync(fileName, data);
+}
+
+async function init() {
+  try {
+    const userInput = await inquirer.prompt(questions);
+
+    const readmeContent = generateMarkdown(userInput);
+
+    await writeToFile('README.md', readmeContent);
+
+    console.log('README.md successfully generated!');
+  } catch (error) {
+    console.error('Error generating README:', error);
+  }
+}
+
 init();
+
+
+
