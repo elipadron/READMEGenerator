@@ -9,7 +9,7 @@ const writeFileAsync = util.promisify(fs.writeFile);
 const questions = [
   {
     type: 'input',
-    name: 'github',
+    name: 'githubUsername',
     message: 'What is your github username?',
   },
 
@@ -25,9 +25,10 @@ const questions = [
   },
   {
     type: 'input',
-    name: 'license',
-    message: 'What license does your project use?',
+    name: 'dependencies',
+    message: 'What dependencies need to be installed',
   },
+
 ];
 
 function writeToFile(fileName, data) {
