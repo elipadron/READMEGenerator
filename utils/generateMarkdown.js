@@ -28,7 +28,7 @@ function renderLicenseBadge(license) {
   - [Description](#description)
   - [License](#license)
   - [Installation] (#installation)
-  - [Questions](#questions)
+  - [Questions](#questions)Í
   `;
 
 
